@@ -1,0 +1,26 @@
+[build-system]
+requires = ["flit_core >=2,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.flit.metadata]
+dist-name = "pyyaml_env_tag"
+module = "yaml_env_tag"
+author = "Waylan Limberg"
+author-email = "waylan.limberg@icloud.com"
+home-page = "https://github.com/waylan/pyyaml-env-tag"
+description-file = "README.md"
+requires-python = ">=3.6"
+requires = ["pyyaml"]
+classifiers = [
+    'License :: OSI Approved :: MIT License',
+    'Development Status :: 4 - Beta',
+    'Intended Audience :: Developers',
+    'Operating System :: OS Independent',
+    'Programming Language :: Python :: 3',
+    'Programming Language :: Python :: 3.6',
+    'Programming Language :: Python :: 3.7',
+    'Programming Language :: Python :: 3.8',
+    'Programming Language :: Python :: 3.9',
+    'Topic :: Software Development :: Libraries :: Python Modules',
+    'Topic :: Text Processing :: Markup',
+]
