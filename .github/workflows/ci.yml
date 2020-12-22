@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches:
+    - master
+    tags:
+    - '**'
+  pull_request:
+    branches:
+    - '**'
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python-version: [3.6, 3.7, 3.8, 3.9, pypy3]
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip coverage pyyaml
+    - name: Run tests
+      run: |
+        coverage run --source=yaml_env_tag test_yaml_env_tag.py
+    - name: Generate coverage report
+      if: success()
+      run: |
+        coverage xml
+        coverage report --show-missing
+    - name: Upload Results
+      if: success()
+      uses: codecov/codecov-action@v1
+      with:
+        file: ./coverage.xml
+        flags: unittests
+        name: ${{ matrix.os }}/Python ${{ matrix.python-version }}
+        fail_ci_if_error: false
