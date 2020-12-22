@@ -2,6 +2,17 @@
 
 A custom YAML tag for referencing environment variables in YAML files.
 
+[![PyPI Version][pypi-image]][pypi-link]
+[![Build Status][GHAction-image]][GHAction-link]
+[![Coverage Status][codecov-image]][codecov-link]
+
+[pypi-image]: https://img.shields.io/pypi/v/pyyaml-env-tag.svg
+[pypi-link]: https://pypi.org/project/pyyaml-env-tag/
+[GHAction-image]: https://github.com/waylan/pyyaml-env-tag/workflows/CI/badge.svg?branch=master&event=push
+[GHAction-link]: https://github.com/waylan/pyyaml-env-tag/actions?query=event%3Apush+branch%3Amaster
+[codecov-image]: https://codecov.io/github/waylan/pyyaml-env-tag/coverage.svg?branch=master
+[codecov-link]: https://codecov.io/github/waylan/pyyaml-env-tag?branch=master
+
 ## Installation
 
 Install `PyYAML` and the `pyyaml_env_tag` package with pip:
