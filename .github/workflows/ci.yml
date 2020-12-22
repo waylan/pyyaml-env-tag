@@ -43,3 +43,12 @@ jobs:
         flags: unittests
         name: ${{ matrix.os }}/Python ${{ matrix.python-version }}
         fail_ci_if_error: false
+
+  flake8:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: TrueBrain/actions-flake8@1.4.1
+        if: github.event_name == 'pull_request'
+        with:
+          max_line_length: 118
