@@ -1,0 +1,11 @@
+codecov:
+  require_ci_to_pass: yes
+  notify:
+        after_n_builds: 15 # 5 python versions x 3 platforms = 15
+
+comment: false
+
+coverage:
+  precision: 2
+  round: down
+  range: "90...100"

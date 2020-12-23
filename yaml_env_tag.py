@@ -20,9 +20,11 @@ def construct_env_tag(loader: yaml.Loader, node: yaml.Node) -> Any:
         # Env Vars are resolved as string values, ignoring (implicit) types.
         vars = [loader.construct_scalar(child) for child in child_nodes]
     else:
-        raise yaml.constructor.ConstructorError(None, None,
+        raise yaml.constructor.ConstructorError(
+            None, None,
             f'expected a scalar or sequence node, but found {node.id}',
-            node.start_mark)
+            node.start_mark
+        )
 
     for var in vars:
         if var in os.environ:

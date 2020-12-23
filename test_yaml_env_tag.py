@@ -5,6 +5,7 @@ import unittest
 from unittest import mock
 from yaml_env_tag import construct_env_tag
 
+
 def mockenv(**kwargs):
     ''' Decorator to mock os.environ with provided variables. '''
     return mock.patch.dict(os.environ, kwargs)
@@ -258,7 +259,7 @@ class TestYamlEnvTag(unittest.TestCase):
     # WARNING! The Environment Variable names in the following tests are
     # probably a bad idea in use. In fact, it may not even be possable to
     # set them in most OSs. We are testing that they don't get converted
-    # to native Python types, ensuring expected results in edge cases. 
+    # to native Python types, ensuring expected results in edge cases.
 
     @mockenv(null='foo')
     def test_env_name_null(self):
@@ -313,8 +314,8 @@ class TestYamlEnvTag(unittest.TestCase):
         yaml.Loader.add_constructor('!ENV', construct_env_tag)
         self.assertRaises(
             yaml.constructor.ConstructorError,
-            yaml.load, 
-            '!ENV [[foo]]', 
+            yaml.load,
+            '!ENV [[foo]]',
             Loader=yaml.Loader
         )
 
@@ -322,10 +323,11 @@ class TestYamlEnvTag(unittest.TestCase):
         yaml.Loader.add_constructor('!ENV', construct_env_tag)
         self.assertRaises(
             yaml.constructor.ConstructorError,
-            yaml.load, 
-            '!ENV {key: value}', 
+            yaml.load,
+            '!ENV {key: value}',
             Loader=yaml.Loader
         )
+
 
 if __name__ == '__main__':
     unittest.main()
