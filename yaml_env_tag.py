@@ -27,10 +27,15 @@ def construct_env_tag(loader: yaml.Loader, node: yaml.Node) -> Any:
         )
 
     for var in vars:
+        if var.startswith("~"):
+            var = var[1:]
+            not_var = true
         if var in os.environ:
             value = os.environ[var]
             # Resolve value to Python type using YAML's implicit resolvers
             tag = loader.resolve(yaml.nodes.ScalarNode, value, (True, False))
+            if not_var:
+                tag = not tag
             return loader.construct_object(yaml.nodes.ScalarNode(tag, value))
 
     return default
