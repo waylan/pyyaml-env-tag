@@ -3,7 +3,7 @@ import yaml
 import datetime
 import unittest
 from unittest import mock
-from yaml_env_tag import construct_env_tag
+from yaml_env_tag import add_env_tag
 
 
 def mockenv(**kwargs):
@@ -14,8 +14,7 @@ def mockenv(**kwargs):
 class TestYamlEnvTag(unittest.TestCase):
 
     def assertYamlLoad(self, data, expected, loader=yaml.Loader):
-        loader.add_constructor('!ENV', construct_env_tag)
-        self.assertEqual(expected, yaml.load(data, Loader=loader))
+        self.assertEqual(expected, yaml.load(data, Loader=add_env_tag(loader)))
 
     @mockenv(VAR='foo')
     def test_scalar(self):
@@ -311,21 +310,19 @@ class TestYamlEnvTag(unittest.TestCase):
         )
 
     def test_env_name_sequance(self):
-        yaml.Loader.add_constructor('!ENV', construct_env_tag)
         self.assertRaises(
             yaml.constructor.ConstructorError,
             yaml.load,
             '!ENV [[foo]]',
-            Loader=yaml.Loader
+            Loader=add_env_tag(yaml.Loader)
         )
 
     def test_env_name_mapping(self):
-        yaml.Loader.add_constructor('!ENV', construct_env_tag)
         self.assertRaises(
             yaml.constructor.ConstructorError,
             yaml.load,
             '!ENV {key: value}',
-            Loader=yaml.Loader
+            Loader=add_env_tag(yaml.Loader)
         )
 
 

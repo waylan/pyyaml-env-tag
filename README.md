@@ -23,20 +23,31 @@ pip install pyyaml pyyaml_env_tag
 
 ### Enabling the tag
 
-To enable the tag, import and add the `construct_env_tag` constructor to your YAML
-loader of choice.
+To enable the tag, pass your loader of choice into the `add_env_tag`, which will return
+the loader with the construstor added to is.
 
 ```python
 import yaml
-from yaml_env_tag import construct_env_tag
+from yaml_env_tag import add_env_tag
 
-yaml.Loader.add_constructor('!ENV', construct_env_tag)
+myLoader = add_env_tag(yaml.Loader)
 ```
 
 Then you may use the loader as per usual. For example:
 
 ```python
-yaml.load(data, Loader=yaml.Loader)
+yaml.load(data, Loader=myLoader)
+```
+
+The `add_env_tag` is a high level helper function. If you need lower level access, you may
+add the constructor (`yaml_env_tag.construct_env_tag`) to the loader directly using the 
+`add_constructor` method of the loader. Note that this requires that the tag (`!ENV`) be
+defined as well.
+
+```python
+from yaml_env_tag import construct_env_tag
+
+Loader.add_constructor('!ENV', construct_env_tag)
 ```
 
 ## Using the tag
@@ -121,6 +132,10 @@ pyyaml_env_tag is licensed under the [MIT License] as defined in `LICENSE`.
 [MIT License]: https://opensource.org/licenses/MIT
 
 ## Changelog
+
+### [unreleased]
+
+- Add the `add_env_tag` helper function as a higher level way of modifying the loader.
 
 ### Version 0.1 (released 2020-11-11)
 
