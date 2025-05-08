@@ -35,6 +35,7 @@ def construct_env_tag(loader: yaml.Loader, node: yaml.Node) -> Any:
 
     return default
 
+
 def add_env_tag(loader: yaml.Loader) -> yaml.Loader:
     """ Modify and return Loader with env tag support. """
     loader.add_constructor('!ENV', construct_env_tag)

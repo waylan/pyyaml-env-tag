@@ -3,7 +3,7 @@ import yaml
 import datetime
 import unittest
 from unittest import mock
-from yaml_env_tag import construct_env_tag, add_env_tag
+from yaml_env_tag import add_env_tag
 
 
 def mockenv(**kwargs):
