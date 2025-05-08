@@ -15,16 +15,16 @@ A custom YAML tag for referencing environment variables in YAML files.
 
 ## Installation
 
-Install `PyYAML` and the `pyyaml_env_tag` package with pip:
+Install the `pyyaml_env_tag` package with pip:
 
 ```bash
-pip install pyyaml pyyaml_env_tag
+pip install pyyaml_env_tag
 ```
 
 ### Enabling the tag
 
-To enable the tag, pass your loader of choice into the `add_env_tag`, which will return
-the loader with the construstor added to is.
+To enable the tag, pass your loader of choice into the `add_env_tag` function, which will
+return the loader with the construstor added to it.
 
 ```python
 import yaml
@@ -137,6 +137,6 @@ pyyaml_env_tag is licensed under the [MIT License] as defined in `LICENSE`.
 
 - Add the `add_env_tag` helper function as a higher level way of modifying the loader.
 
-### Version 0.1 (released 2020-11-11)
+### [0.1] - 2020-11-11
 
 The initial release.
