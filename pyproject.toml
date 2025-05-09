@@ -4,7 +4,7 @@ build-backend = 'setuptools.build_meta'
 
 [project]
 name = 'pyyaml_env_tag'
-version = '0.1'
+dynamic = ['version']
 description = 'A custom YAML tag for referencing environment variables in YAML files.'
 readme = {file = 'README.md', content-type='text/markdown'}
 authors = [{name = 'Waylan Limberg', email = 'waylan.limberg@icloud.com'}]
@@ -13,7 +13,7 @@ dependencies = ['pyyaml']
 license = 'MIT'
 license-files = ['LICENSE']
 classifiers = [
-    'Development Status :: 4 - Beta',
+    'Development Status :: 5 - Production/Stable',
     'Intended Audience :: Developers',
     'Operating System :: OS Independent',
     'Programming Language :: Python :: 3',
@@ -33,3 +33,6 @@ Repository = 'https://github.com/waylan/pyyaml-env-tag'
 
 [tool.setuptools]
 py-modules = ['yaml_env_tag']
+
+[tool.setuptools.dynamic]
+version = {attr = 'yaml_env_tag.__version__'}
