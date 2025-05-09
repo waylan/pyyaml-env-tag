@@ -133,7 +133,7 @@ pyyaml_env_tag is licensed under the [MIT License] as defined in `LICENSE`.
 
 ## Changelog
 
-### [unreleased]
+### [1.0] - 2025-05-09
 
 - Add the `add_env_tag` helper function as a higher level way of modifying the loader.
 
