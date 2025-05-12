@@ -29,7 +29,7 @@ jobs:
         python -m pip install --upgrade pip coverage pyyaml
     - name: Run tests
       run: |
-        coverage run --source=yaml_env_tag test_yaml_env_tag.py
+        coverage run --source=yaml_env_tag tests/test_yaml_env_tag.py
     - name: Generate coverage report
       if: success()
       run: |
