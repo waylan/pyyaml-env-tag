@@ -1,5 +1,5 @@
 """ A custom YAML tag for referencing environment variables in YAML files. """
-__version__ = '1.0'
+__version__ = '1.1'
 
 import os
 import yaml
