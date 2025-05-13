@@ -133,7 +133,7 @@ pyyaml_env_tag is licensed under the [MIT License] as defined in `LICENSE`.
 
 ## Changelog
 
-### [unreleased]
+### [1.1] - 2025-05-13
 
 - Ensure tests get included with distribution (#9).
 
